@@ -10,7 +10,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Register local tap
+        run: brew tap jalkarna/archiva "$PWD"
       - name: Install formula
-        run: brew install --build-from-source ./Formula/archiva.rb
+        run: brew install --build-from-source jalkarna/archiva/archiva
       - name: Test formula
-        run: brew test ./Formula/archiva.rb
+        run: brew test jalkarna/archiva/archiva
