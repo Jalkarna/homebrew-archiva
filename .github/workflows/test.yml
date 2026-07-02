@@ -1,0 +1,16 @@
+name: Test formula
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install formula
+        run: brew install --build-from-source ./Formula/archiva.rb
+      - name: Test formula
+        run: brew test ./Formula/archiva.rb
